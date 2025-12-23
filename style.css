@@ -784,25 +784,71 @@ a.btn:hover{
 }
 
 .fillter-buttons{
-    margin: 2rem;
+    margin: 2rem auto;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-.fillter-buttons .button{
-    background: none;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    font-size: .85rem;
-    font-weight: 600;
-    letter-spacing: .4px;
-    margin-left: 1.3rem;
+.fillter-buttons .btn{
+    background: transparent;
+    border: 2px solid var(--hover-color);
     color: var(--text-color);
+    padding: 9px 22px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        transform 0.25s ease,
+        box-shadow 0.3s ease;
+}
+
+.fillter-buttons .btn::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--hover-color);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.fillter-buttons .btn:hover::before{
+    opacity: 1;
 }
 
 
-.fillter-buttons .button:hover{
-    color: var(--hover-color);
+
+.fillter-buttons .btn:hover{
+    color: var(--secon-bg-color);
+    background: var(--hover-color);
+    box-shadow: 0 0 12px var(--hover-color),
+                0 0 30px var(--hover-color);
+    transform: translateY(-3px);
+}
+
+.fillter-buttons .btn.active{
+    background: var(--hover-color);
+    color: var(--secon-bg-color);
+    box-shadow:
+        0 0 15px var(--hover-color),
+        0 0 35px var(--hover-color);
+}
+
+/* CLICK EFFECT */
+.fillter-buttons .btn:active{
+    transform: scale(0.92);
+    box-shadow:
+        0 0 8px var(--hover-color);
 }
 
 .portfolio-gallery{
@@ -889,6 +935,7 @@ a.btn:hover{
     font-size: 1.3rem;
     color: var(--secon-bg-color);
 }
+
 
 /*--Contact Section------------------------------------------------------------------------*/
 .contact {
@@ -1570,6 +1617,7 @@ a.btn:hover{
         font-size: 0.7rem;
     }
 }
+
 
 
 
